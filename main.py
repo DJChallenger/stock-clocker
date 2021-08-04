@@ -15,7 +15,8 @@ import pandas as pd
 
 from create_df import blankdf # Creates blank data frame
 from intrinsic import intrinsic_value # Calculates intrinsic value
-from implied import implied_volatility # Calculated implied volatility
+# from implied import implied_volatility # Calculates implied volatility
+from binomial_tree import binomial # Calculates price using binomial tree
 
 # What information do I need?
 #
@@ -55,7 +56,8 @@ PriceIncrement = 0.05 # Increment of all prices being displayed
 
 df0 = 0 # Blank dataframe with columns and rows labeled
 df_IntrinsicValue = 0.0 # Dataframe containing intrinsic values
-df_ImpliedVolatility = 0.0 # Dataframe containing implied volatility
+# df_ImpliedVolatility = 0.0 # Dataframe containing implied volatility
+df_BinomialTree = 0 # Calculate contract prices using binomial tree method
 TimeDecay = 0.0
 CurrentDate = dt.date.today()
 
@@ -77,8 +79,6 @@ CurrentDate = dt.date.today()
 
 # Main components of code
 
-#----------------------------------------------------------------------------#
-
 # Create blank dataframe which will be filled with calculated values 
 df0 = blankdf(CurrentDate, ExpirationDate, MaxStockPrice, MinStockPrice, \
               PriceIncrement)
@@ -87,9 +87,12 @@ df0 = blankdf(CurrentDate, ExpirationDate, MaxStockPrice, MinStockPrice, \
 df_IntrinsicValue = intrinsic_value(df0, StockPrice, StrikePrice, OptionType)
 
 # Calculate implied volatility
-df_ImpliedVolatility = implied_volatility(StockPrice, StrikePrice, \
-                                          OptionPremium, OptionType, \
-                                          ExpirationDate)
+# df_ImpliedVolatility = implied_volatility(StockPrice, StrikePrice, \
+#                                           OptionPremium, OptionType, \
+#                                           ExpirationDate)
+    
+df_BinomialTree = binomial(StockPrice, StrikePrice, OptionPremium, \
+                                    OptionType, ExpirationDate)
 
 # print(df0.index)
 # strikes =  np.array(df0.index)
