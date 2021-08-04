@@ -99,5 +99,5 @@ df_ImpliedVolatility = implied_volatility(StockPrice, StrikePrice, \
 #     print(row, ' ')
 
 # numnum=123.456789
-# print("Two numnum decibals = %.2f" % fuckyou)
+# print("Two numnum decibals = %.2f" % numnum)
 # decitest=("%.2f"%numnum)
